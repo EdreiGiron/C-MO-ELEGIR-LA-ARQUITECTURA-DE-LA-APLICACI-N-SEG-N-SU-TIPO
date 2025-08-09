@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage[a4paper,top=2.54cm,bottom=2.54cm,left=2.54cm,right=2.54cm]{geometry}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[style=apa, backend=biber]{biblatex}
+\DeclareLanguageMapping{spanish}{spanish-apa}
+\addbibresource{sample.bib}
+\usepackage{array}
+
+\doublespacing
+
+\title{\textbf{CÓMO ELEGIR LA ARQUITECTURA DE LA APLICACIÓN SEGÚN SU TIPO}}
+\author{%
+    \begin{tabular}{c}
+        \textit{E.A. Girón Leonardo} \\
+        \textit{7690-21-218 Universidad Mariano Gálvez} \\
+        \textit{Seminario de Tecnologías} \\
+        \href{mailto:egironl12@miumg.edu.gt}{\uline{egironl12@miumg.edu.gt}}
+    \end{tabular}%
+}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Elegir la arquitectura correcta para una aplicación no es solo una decisión técnica, sino estratégica. En este artículo se explica cómo analizar el tipo de proyecto, su alcance y necesidades para decidir entre arquitecturas como monolito, en capas, microservicios, serverless e incluso modelos híbridos. Las recomendaciones están basadas en buenas prácticas y literatura técnica \parencite{bass2021, richards2020, villalobos2022}.
+\end{abstract}
+
+\textbf{Palabras clave:} arquitectura de software, microservicios, monolito, serverless, escalabilidad.
+
+\section{Introducción}
+
+En cualquier desarrollo de software, la arquitectura define cómo se organiza el sistema y cómo se conectan sus partes. No hay una única “mejor” arquitectura; la elección depende del contexto. Es común escuchar sobre microservicios o serverless como soluciones modernas, pero estas no siempre son necesarias ni eficientes para todos los casos. Para tomar una decisión informada hay que evaluar desde el tamaño del proyecto hasta las expectativas de crecimiento y mantenimiento.
+
+\section{Marco teórico}
+
+\subsection{Monolítica}
+Una sola base de código que contiene toda la lógica. Es rápida de desarrollar y desplegar, ideal para proyectos pequeños o medianos. Sin embargo, cuando crece puede volverse más difícil de mantener y escalar.
+
+\subsection{En capas (N-tier)}
+Divide la aplicación en presentación, lógica y datos. Es más organizada y facilita el trabajo en equipo. Funciona bien en entornos corporativos con aplicaciones medianas o grandes.
+
+\subsection{Microservicios}
+Separan la aplicación en servicios pequeños e independientes. Cada servicio puede estar en un lenguaje distinto y se comunica mediante APIs. Escala muy bien y permite despliegues independientes, pero es más complejo de implementar.
+
+\subsection{Serverless}
+Basado en funciones que se ejecutan solo cuando se necesitan, administradas por un proveedor en la nube. Ideal para cargas variables y eventos puntuales, aunque crea dependencia con el proveedor y limita la personalización.
+
+\subsection{Otros modelos}
+Arquitecturas hexagonales y orientadas a eventos son opciones para proyectos que requieren alta flexibilidad, integraciones frecuentes y facilidad de pruebas.
+
+\section{Criterios para la elección}
+
+Antes de elegir, conviene responder estas preguntas:
+\begin{itemize}
+    \item ¿Cuántos usuarios tendrá inicialmente y a futuro?
+    \item ¿Qué tan rápido deben ser las respuestas?
+    \item ¿Qué tan frecuente será el mantenimiento?
+    \item ¿Existen integraciones externas críticas?
+    \item ¿Qué presupuesto y tiempo de desarrollo hay disponibles?
+    \item ¿Qué nivel de experiencia tiene el equipo?
+\end{itemize}
+
+También es clave considerar:
+\begin{itemize}
+    \item \textbf{Requerimientos de seguridad:} en sectores como banca o salud.
+    \item \textbf{Latencia:} tiempo real vs. procesamiento en segundo plano.
+    \item \textbf{Flexibilidad:} facilidad para incorporar cambios futuros.
+\end{itemize}
+
+\subsection*{Tabla comparativa}
+\begin{center}
+\begin{tabular}{|m{3cm}|m{5cm}|m{5cm}|}
+\hline
+\textbf{Arquitectura} & \textbf{Cuándo usarla} & \textbf{Cuándo evitarla} \\
+\hline
+Monolito & Proyectos pequeños, MVPs, aplicaciones internas simples & Cuando se espera crecimiento rápido y gran volumen de usuarios \\
+\hline
+En capas & Aplicaciones corporativas con módulos definidos & Cuando los límites entre módulos no son claros \\
+\hline
+Microservicios & Sistemas grandes, con equipos distribuidos, alta escalabilidad & Proyectos pequeños, falta de experiencia en despliegues distribuidos \\
+\hline
+Serverless & Procesamiento por eventos, cargas variables, bajo presupuesto inicial & Necesidad de control total sobre la infraestructura \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Observaciones y comentarios}
+
+La experiencia demuestra que no siempre lo más moderno es lo más adecuado. Una buena práctica es empezar con algo simple y evolucionar la arquitectura conforme el proyecto lo requiera. Migrar de un monolito bien estructurado a microservicios es más viable que mantener microservicios innecesarios desde el inicio.
+
+\section{Conclusiones}
+
+1. No hay una arquitectura universalmente mejor; la elección depende del contexto.
+2. Analizar usuarios, escalabilidad, mantenimiento, presupuesto y experiencia es fundamental.
+3. Monolito y capas siguen siendo válidos para proyectos donde la simplicidad es clave.
+4. Microservicios y serverless son útiles en sistemas grandes o con demandas variables, pero requieren experiencia y planificación.
+
+\printbibliography
+
+\end{document}
